@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ===========================
+         AURAVE - Shop Page
+         "Luxury Fashion for Every Aura"
+         
+         This is the product catalog page featuring all products with
+         filtering, search, sorting, and pagination functionality.
+         
+         Author: AURAVE Development Team
+         Version: 1.0
+         Last Updated: 2025
+         =========================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - AURAVE</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">AURAVE</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="search-toggle">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="cart-toggle">
+                            <i class="bi bi-bag">
+                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="display: none;">0</span>
+                            </i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="user-toggle">
+                            <i class="bi bi-person"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Container -->
+    <div id="search-container" class="search-container position-fixed w-100" style="top: 80px; z-index: 1000; display: none;">
+        <div class="container">
+            <div class="bg-white p-3 shadow">
+                <form id="search-form" class="d-flex">
+                    <input type="search" class="form-control me-2" placeholder="Search products..." id="search-input">
+                    <button type="submit" class="btn btn-orange">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Container -->
+    <div id="cart-container" class="cart-container position-fixed" style="top: 80px; right: 20px; width: 350px; max-height: 500px; overflow-y: auto; z-index: 1000; display: none; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+        <!-- Cart content will be populated by JavaScript -->
+    </div>
+
+    <!-- Main Content -->
+    <main style="margin-top: 100px;">
+        <!-- Hero Section -->
+        <section class="hero-section py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold">Discover Our Collection</h1>
+                        <p class="lead">Explore our curated selection of premium fashion items designed for every occasion.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="../assets/images/shop-hero.jpg" alt="Shop Collection" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters and Search -->
+        <section class="py-4 bg-white border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="btn btn-outline-secondary category-filter active" data-category="all">All</button>
+                            <button class="btn btn-outline-secondary category-filter" data-category="women">Women</button>
+                            <button class="btn btn-outline-secondary category-filter" data-category="men">Men</button>
+                            <button class="btn btn-outline-secondary category-filter" data-category="accessories">Accessories</button>
+                            <button class="btn btn-outline-secondary category-filter" data-category="shoes">Shoes</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex gap-2">
+                            <select class="form-select" id="sort-select">
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name">Name A-Z</option>
+                                <option value="rating">Highest Rated</option>
+                            </select>
+                            <button class="btn btn-outline-secondary" id="clear-filters-btn">Clear Filters</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Sidebar Filters -->
+                    <div class="col-lg-3 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Filters</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Price Range -->
+                                <div class="mb-4">
+                                    <h6>Price Range</h6>
+                                    <input type="range" class="form-range" id="price-range" min="0" max="1000" value="500">
+                                    <div class="d-flex justify-content-between">
+                                        <span>$0</span>
+                                        <span id="price-value">$500</span>
+                                        <span>$1000</span>
+                                    </div>
+                                </div>
+
+                                <!-- Size Filter -->
+                                <div class="mb-4">
+                                    <h6>Size</h6>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <button class="btn btn-sm btn-outline-secondary size-filter" data-size="XS">XS</button>
+                                        <button class="btn btn-sm btn-outline-secondary size-filter" data-size="S">S</button>
+                                        <button class="btn btn-sm btn-outline-secondary size-filter" data-size="M">M</button>
+                                        <button class="btn btn-sm btn-outline-secondary size-filter" data-size="L">L</button>
+                                        <button class="btn btn-sm btn-outline-secondary size-filter" data-size="XL">XL</button>
+                                        <button class="btn btn-sm btn-outline-secondary size-filter" data-size="XXL">XXL</button>
+                                    </div>
+                                </div>
+
+                                <!-- Color Filter -->
+                                <div class="mb-4">
+                                    <h6>Color</h6>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <button class="btn btn-sm btn-outline-secondary color-filter" data-color="black" style="background-color: #000; color: white;">Black</button>
+                                        <button class="btn btn-sm btn-outline-secondary color-filter" data-color="white" style="background-color: #fff; color: black; border: 1px solid #ccc;">White</button>
+                                        <button class="btn btn-sm btn-outline-secondary color-filter" data-color="red" style="background-color: #dc3545; color: white;">Red</button>
+                                        <button class="btn btn-sm btn-outline-secondary color-filter" data-color="blue" style="background-color: #0d6efd; color: white;">Blue</button>
+                                        <button class="btn btn-sm btn-outline-secondary color-filter" data-color="green" style="background-color: #198754; color: white;">Green</button>
+                                        <button class="btn btn-sm btn-outline-secondary color-filter" data-color="orange" style="background-color: #ff7b00; color: white;">Orange</button>
+                                    </div>
+                                </div>
+
+                                <!-- Brand Filter -->
+                                <div class="mb-4">
+                                    <h6>Brand</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="aurave" id="brand-aurave">
+                                        <label class="form-check-label" for="brand-aurave">AURAVE</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="premium" id="brand-premium">
+                                        <label class="form-check-label" for="brand-premium">Premium</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="luxury" id="brand-luxury">
+                                        <label class="form-check-label" for="brand-luxury">Luxury</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="col-lg-9">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 id="products-count">Showing 12 products</h4>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-secondary" id="grid-view">
+                                    <i class="bi bi-grid-3x3-gap"></i>
+                                </button>
+                                <button class="btn btn-outline-secondary" id="list-view">
+                                    <i class="bi bi-list"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Products Container -->
+                        <div id="products-container" class="row">
+                            <!-- Products will be loaded here by JavaScript -->
+                        </div>
+
+                        <!-- Load More Button -->
+                        <div class="text-center mt-5">
+                            <button class="btn btn-orange" id="load-more-btn">Load More Products</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>AURAVE</h5>
+                    <p class="mb-0">Luxury Fashion for Every Aura</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2025 AURAVE. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="login-email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="login-password" name="password" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-orange">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="mb-3">
+                            <label for="register-name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="register-name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="register-email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="register-password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="register-confirm-password" name="confirmPassword" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-orange">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/event.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    
+    <!-- Shop Page Script -->
+    <script>
+        // Sample product data
+        const sampleProducts = [
+            {
+                id: 1,
+                name: "Elegant Black Dress",
+                price: 89.99,
+                originalPrice: 129.99,
+                image: "../assets/images/products/dress-1.jpg",
+                category: "women",
+                size: ["XS", "S", "M", "L", "XL"],
+                color: ["black", "navy"],
+                brand: "AURAVE",
+                rating: 4.8,
+                reviewCount: 24,
+                featured: true,
+                new: false,
+                sale: true
+            },
+            {
+                id: 2,
+                name: "Classic White Shirt",
+                price: 49.99,
+                image: "../assets/images/products/shirt-1.jpg",
+                category: "men",
+                size: ["S", "M", "L", "XL", "XXL"],
+                color: ["white", "blue"],
+                brand: "AURAVE",
+                rating: 4.6,
+                reviewCount: 18,
+                featured: true,
+                new: true,
+                sale: false
+            },
+            {
+                id: 3,
+                name: "Premium Leather Jacket",
+                price: 199.99,
+                originalPrice: 249.99,
+                image: "../assets/images/products/jacket-1.jpg",
+                category: "men",
+                size: ["M", "L", "XL", "XXL"],
+                color: ["black", "brown"],
+                brand: "AURAVE",
+                rating: 4.9,
+                reviewCount: 32,
+                featured: true,
+                new: false,
+                sale: true
+            },
+            {
+                id: 4,
+                name: "Silk Scarf",
+                price: 39.99,
+                image: "../assets/images/products/scarf-1.jpg",
+                category: "accessories",
+                size: ["One Size"],
+                color: ["red", "blue", "green", "orange"],
+                brand: "AURAVE",
+                rating: 4.7,
+                reviewCount: 15,
+                featured: false,
+                new: true,
+                sale: false
+            },
+            {
+                id: 5,
+                name: "Designer Handbag",
+                price: 159.99,
+                image: "../assets/images/products/bag-1.jpg",
+                category: "accessories",
+                size: ["One Size"],
+                color: ["black", "brown", "red"],
+                brand: "AURAVE",
+                rating: 4.8,
+                reviewCount: 28,
+                featured: true,
+                new: false,
+                sale: false
+            },
+            {
+                id: 6,
+                name: "Comfortable Sneakers",
+                price: 79.99,
+                image: "../assets/images/products/sneakers-1.jpg",
+                category: "shoes",
+                size: ["6", "7", "8", "9", "10", "11", "12"],
+                color: ["white", "black", "gray"],
+                brand: "AURAVE",
+                rating: 4.5,
+                reviewCount: 41,
+                featured: false,
+                new: true,
+                sale: false
+            },
+            {
+                id: 7,
+                name: "Evening Gown",
+                price: 149.99,
+                originalPrice: 199.99,
+                image: "../assets/images/products/gown-1.jpg",
+                category: "women",
+                size: ["XS", "S", "M", "L"],
+                color: ["black", "navy", "red"],
+                brand: "AURAVE",
+                rating: 4.9,
+                reviewCount: 19,
+                featured: true,
+                new: false,
+                sale: true
+            },
+            {
+                id: 8,
+                name: "Casual T-Shirt",
+                price: 29.99,
+                image: "../assets/images/products/tshirt-1.jpg",
+                category: "men",
+                size: ["S", "M", "L", "XL", "XXL"],
+                color: ["white", "black", "gray", "blue"],
+                brand: "AURAVE",
+                rating: 4.4,
+                reviewCount: 35,
+                featured: false,
+                new: true,
+                sale: false
+            }
+        ];
+
+        // Initialize shop page
+        $(document).ready(function() {
+            // Load products
+            loadProducts(sampleProducts);
+            
+            // Add event listeners
+            $('#load-more-btn').click(function() {
+                loadMoreProducts();
+            });
+            
+            $('#grid-view').click(function() {
+                $('#products-container').removeClass('list-view').addClass('grid-view');
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+            
+            $('#list-view').click(function() {
+                $('#products-container').removeClass('grid-view').addClass('list-view');
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+            
+            // Set default view
+            $('#grid-view').addClass('active');
+        });
+
+        function loadProducts(products) {
+            const container = $('#products-container');
+            container.empty();
+            
+            products.forEach(product => {
+                const productCard = createProductCard(product);
+                container.append(productCard);
+            });
+            
+            updateProductsCount(products.length);
+        }
+
+        function createProductCard(product) {
+            const discount = product.originalPrice ? 
+                Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+            
+            return $(`
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="position-relative">
+                            <img src="${product.image}" class="card-img-top product-image" alt="${product.name}" style="height: 250px; object-fit: cover;">
+                            ${product.sale ? `<span class="badge bg-danger position-absolute top-0 start-0 m-2">${discount}% OFF</span>` : ''}
+                            ${product.new ? `<span class="badge bg-success position-absolute top-0 end-0 m-2">NEW</span>` : ''}
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <button class="btn btn-sm btn-light wishlist-btn" data-product-id="${product.id}">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text text-muted">${product.brand}</p>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rating me-2">
+                                    ${generateStars(product.rating)}
+                                </div>
+                                <small class="text-muted">(${product.reviewCount})</small>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div>
+                                    <span class="h5 text-orange">$${product.price}</span>
+                                    ${product.originalPrice ? `<span class="text-muted text-decoration-line-through ms-2">$${product.originalPrice}</span>` : ''}
+                                </div>
+                            </div>
+                            <div class="mt-auto">
+                                <button class="btn btn-orange w-100 add-to-cart-btn" 
+                                        data-product-id="${product.id}"
+                                        data-product-name="${product.name}"
+                                        data-product-price="${product.price}"
+                                        data-product-image="${product.image}">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="bi bi-star-fill text-warning"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="bi bi-star-half text-warning"></i>';
+            }
+            
+            const emptyStars = 5 - Math.ceil(rating);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="bi bi-star text-warning"></i>';
+            }
+            
+            return stars;
+        }
+
+        function updateProductsCount(count) {
+            $('#products-count').text(`Showing ${count} products`);
+        }
+
+        function loadMoreProducts() {
+            // Simulate loading more products
+            UIFunctions.showLoading();
+            
+            setTimeout(() => {
+                UIFunctions.hideLoading();
+                Utils.showNotification('No more products to load', 'info');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

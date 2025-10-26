@@ -1,0 +1,558 @@
+/* ===========================
+   AURAVE Theme Styles
+   "Luxury Fashion for Every Aura"
+   
+   This file contains all custom styling for the AURAVE e-commerce website.
+   It includes brand colors, typography, component styles, animations, and responsive design.
+   
+   Author: AURAVE Development Team
+   Version: 1.0
+   Last Updated: 2025
+=========================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* ===========================
+   BRAND COLORS & CSS VARIABLES
+   Defines the AURAVE color palette and reusable CSS variables
+=========================== */
+:root {
+  --aurave-orange: #ff7b00;
+  --aurave-black: #1a1a1a;
+  --aurave-white: #ffffff;
+  --aurave-gray: #f8f9fa;
+  --aurave-dark-gray: #6c757d;
+  --aurave-light-gray: #e9ecef;
+  --aurave-gradient: linear-gradient(135deg, #ff7b00 0%, #ff9500 100%);
+  --aurave-shadow: 0 4px 20px rgba(255, 123, 0, 0.15);
+  --aurave-shadow-hover: 0 8px 30px rgba(255, 123, 0, 0.25);
+}
+
+/* ===========================
+   GENERAL STYLING & RESET
+   Base styles, typography, and global resets
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--aurave-white);
+  color: var(--aurave-black);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ===========================
+   TYPOGRAPHY
+   Font families, sizes, and text styling
+=========================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.display-1, .display-2, .display-3, .display-4 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+/* ===========================
+   NAVIGATION BAR
+   Header navigation styling and responsive behavior
+=========================== */
+.navbar {
+  background-color: var(--aurave-white) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 1rem 0;
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--aurave-orange) !important;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--aurave-black) !important;
+  transform: scale(1.05);
+}
+
+.nav-link {
+  color: var(--aurave-black) !important;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 1rem !important;
+}
+
+.nav-link:hover {
+  color: var(--aurave-orange) !important;
+}
+
+.nav-link.active {
+  color: var(--aurave-orange) !important;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--aurave-gradient);
+  border-radius: 2px;
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(255, 123, 0, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ff7b00" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ff7b00" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ff7b00" opacity="0.05"/><circle cx="10" cy="60" r="0.5" fill="%23ff7b00" opacity="0.05"/><circle cx="90" cy="40" r="0.5" fill="%23ff7b00" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.hero-section > div {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: var(--aurave-black);
+  margin-bottom: 1.5rem;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-section .lead {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--aurave-dark-gray);
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Buttons */
+.btn-orange {
+  background: var(--aurave-gradient);
+  color: var(--aurave-white);
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: var(--aurave-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-orange::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-orange:hover {
+  background: var(--aurave-black);
+  color: var(--aurave-white);
+  transform: translateY(-3px);
+  box-shadow: var(--aurave-shadow-hover);
+}
+
+.btn-orange:hover::before {
+  left: 100%;
+}
+
+.btn-orange:active {
+  transform: translateY(-1px);
+}
+
+/* Feature Boxes */
+.feature-box {
+  width: 100%;
+  height: 300px;
+  background: var(--aurave-white);
+  border: 2px solid var(--aurave-light-gray);
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.feature-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--aurave-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-box:hover {
+  border-color: var(--aurave-orange);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--aurave-shadow-hover);
+}
+
+.feature-box:hover::before {
+  opacity: 0.1;
+}
+
+.feature-box h3 {
+  color: var(--aurave-black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.feature-box p {
+  color: var(--aurave-dark-gray);
+  font-size: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Product Cards */
+.product-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: var(--aurave-white);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--aurave-shadow-hover);
+}
+
+.product-card .card-img-top {
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.product-card .card-body {
+  padding: 1.5rem;
+}
+
+.product-card .card-title {
+  color: var(--aurave-black);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.product-card .card-text {
+  color: var(--aurave-dark-gray);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.product-card .price {
+  color: var(--aurave-orange);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.product-card .btn {
+  width: 100%;
+  background: var(--aurave-gradient);
+  border: none;
+  color: var(--aurave-white);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.product-card .btn:hover {
+  background: var(--aurave-black);
+  transform: translateY(-2px);
+}
+
+/* Forms */
+.form-control {
+  border: 2px solid var(--aurave-light-gray);
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--aurave-orange);
+  box-shadow: 0 0 0 0.2rem rgba(255, 123, 0, 0.25);
+}
+
+.form-label {
+  color: var(--aurave-black);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  background: var(--aurave-black);
+  color: var(--aurave-white);
+  padding: 3rem 0 2rem;
+  margin-top: 5rem;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Utility Classes */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-orange {
+  color: var(--aurave-orange) !important;
+}
+
+.bg-orange {
+  background: var(--aurave-gradient) !important;
+}
+
+.bg-light-gray {
+  background-color: var(--aurave-gray) !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border: 0.3rem solid var(--aurave-light-gray);
+  border-top-color: var(--aurave-orange);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+  }
+  
+  .hero-section .lead {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .feature-box {
+    height: 250px;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-orange {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-section .lead {
+    font-size: 1.1rem;
+  }
+  
+  .feature-box {
+    height: 200px;
+  }
+  
+  .feature-box h3 {
+    font-size: 1.2rem;
+  }
+  
+  .feature-box p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--aurave-light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--aurave-orange);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--aurave-black);
+}
+
+/* Selection Styling */
+::selection {
+  background: var(--aurave-orange);
+  color: var(--aurave-white);
+}
+
+::-moz-selection {
+  background: var(--aurave-orange);
+  color: var(--aurave-white);
+}

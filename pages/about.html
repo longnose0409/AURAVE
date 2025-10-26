@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ===========================
+         AURAVE - About Page
+         "Luxury Fashion for Every Aura"
+         
+         This page contains company information, team profiles,
+         company values, and sustainability commitment.
+         
+         Author: AURAVE Development Team
+         Version: 1.0
+         Last Updated: 2025
+         =========================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AURAVE</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">AURAVE</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="search-toggle">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="cart-toggle">
+                            <i class="bi bi-bag">
+                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="display: none;">0</span>
+                            </i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="user-toggle">
+                            <i class="bi bi-person"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Container -->
+    <div id="search-container" class="search-container position-fixed w-100" style="top: 80px; z-index: 1000; display: none;">
+        <div class="container">
+            <div class="bg-white p-3 shadow">
+                <form id="search-form" class="d-flex">
+                    <input type="search" class="form-control me-2" placeholder="Search products..." id="search-input">
+                    <button type="submit" class="btn btn-orange">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Container -->
+    <div id="cart-container" class="cart-container position-fixed" style="top: 80px; right: 20px; width: 350px; max-height: 500px; overflow-y: auto; z-index: 1000; display: none; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+        <!-- Cart content will be populated by JavaScript -->
+    </div>
+
+    <!-- Main Content -->
+    <main style="margin-top: 100px;">
+        <!-- Hero Section -->
+        <section class="hero-section py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold">About AURAVE</h1>
+                        <p class="lead">Discover the story behind our luxury fashion brand and our commitment to elegance, quality, and sustainability.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="../assets/images/about-hero.jpg" alt="About AURAVE" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-5 fw-bold mb-4">Our Story</h2>
+                        <p class="lead mb-4">
+                            Founded in 2020 by three passionate fashion enthusiasts - Gem, Val, and Arjaylen - AURAVE was born from a shared vision to create luxury fashion that speaks to every individual's unique aura.
+                        </p>
+                        <p class="mb-4">
+                            What started as a small collection of carefully curated pieces has grown into a comprehensive fashion brand that celebrates diversity, elegance, and personal expression. We believe that fashion is more than just clothing - it's a way to express your inner self and make a statement about who you are.
+                        </p>
+                        <p>
+                            Today, AURAVE continues to push boundaries in the fashion industry, combining timeless elegance with modern innovation to create pieces that are both beautiful and meaningful.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body p-5 text-center">
+                                <i class="bi bi-heart display-1 text-orange mb-3"></i>
+                                <h3 class="card-title">Our Mission</h3>
+                                <p class="card-text">
+                                    To empower individuals to express their unique aura through carefully crafted, sustainable fashion that combines luxury with accessibility. We strive to create pieces that make you feel confident, beautiful, and authentically yourself.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body p-5 text-center">
+                                <i class="bi bi-eye display-1 text-orange mb-3"></i>
+                                <h3 class="card-title">Our Vision</h3>
+                                <p class="card-text">
+                                    To become the leading luxury fashion brand that celebrates diversity and individuality while setting new standards for sustainability and ethical practices in the fashion industry.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Values -->
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Our Values</h2>
+                    <p class="lead">The principles that guide everything we do</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center">
+                            <div class="feature-box mx-auto mb-3" style="height: 200px;">
+                                <i class="bi bi-gem display-1 text-orange mb-3"></i>
+                                <h4>Quality</h4>
+                                <p>We use only the finest materials and craftsmanship to ensure every piece meets our high standards.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center">
+                            <div class="feature-box mx-auto mb-3" style="height: 200px;">
+                                <i class="bi bi-recycle display-1 text-orange mb-3"></i>
+                                <h4>Sustainability</h4>
+                                <p>We're committed to ethical practices and environmental responsibility in all our operations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center">
+                            <div class="feature-box mx-auto mb-3" style="height: 200px;">
+                                <i class="bi bi-people display-1 text-orange mb-3"></i>
+                                <h4>Inclusivity</h4>
+                                <p>Fashion is for everyone. We celebrate diversity and create pieces for all body types and styles.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center">
+                            <div class="feature-box mx-auto mb-3" style="height: 200px;">
+                                <i class="bi bi-lightbulb display-1 text-orange mb-3"></i>
+                                <h4>Innovation</h4>
+                                <p>We constantly push boundaries to create fresh, modern designs that stand the test of time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet the Team -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Meet Our Founders</h2>
+                    <p class="lead">The passionate individuals behind AURAVE</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <img src="../assets/images/team/gem.jpg" class="card-img-top" alt="Gem" style="height: 300px; object-fit: cover;">
+                            <div class="card-body text-center p-4">
+                                <h4 class="card-title">Gem</h4>
+                                <p class="text-muted">Creative Director</p>
+                                <p class="card-text">
+                                    Gem brings over 10 years of experience in fashion design and has a keen eye for detail and aesthetics. She leads our creative vision and ensures every piece tells a story.
+                                </p>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-instagram"></i></a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <img src="../assets/images/team/val.jpg" class="card-img-top" alt="Val" style="height: 300px; object-fit: cover;">
+                            <div class="card-body text-center p-4">
+                                <h4 class="card-title">Val</h4>
+                                <p class="text-muted">Business Director</p>
+                                <p class="card-text">
+                                    Val handles our business operations and strategic partnerships. With a background in business management, she ensures AURAVE's sustainable growth and success.
+                                </p>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-instagram"></i></a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <img src="../assets/images/team/arjaylen.jpg" class="card-img-top" alt="Arjaylen" style="height: 300px; object-fit: cover;">
+                            <div class="card-body text-center p-4">
+                                <h4 class="card-title">Arjaylen</h4>
+                                <p class="text-muted">Technology Director</p>
+                                <p class="card-text">
+                                    Arjaylen leads our digital innovation and customer experience. He ensures our online platform provides a seamless shopping experience for our customers.
+                                </p>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-instagram"></i></a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainability -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="display-5 fw-bold mb-4">Sustainability Commitment</h2>
+                        <p class="lead mb-4">
+                            At AURAVE, we believe in fashion that doesn't cost the earth. Our commitment to sustainability is woven into every aspect of our business.
+                        </p>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-check-circle-fill text-orange me-3 mt-1"></i>
+                                    <div>
+                                        <h5>Eco-Friendly Materials</h5>
+                                        <p class="text-muted">We use sustainable and recycled materials wherever possible.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-check-circle-fill text-orange me-3 mt-1"></i>
+                                    <div>
+                                        <h5>Ethical Production</h5>
+                                        <p class="text-muted">All our partners follow fair labor practices and ethical standards.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-check-circle-fill text-orange me-3 mt-1"></i>
+                                    <div>
+                                        <h5>Carbon Neutral</h5>
+                                        <p class="text-muted">We offset our carbon footprint through verified programs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-check-circle-fill text-orange me-3 mt-1"></i>
+                                    <div>
+                                        <h5>Minimal Packaging</h5>
+                                        <p class="text-muted">We use recyclable and minimal packaging materials.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="../assets/images/sustainability.jpg" alt="Sustainability" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="py-5 bg-orange text-white">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="counter">
+                            <h2 class="display-4 fw-bold">10K+</h2>
+                            <p class="lead">Happy Customers</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="counter">
+                            <h2 class="display-4 fw-bold">500+</h2>
+                            <p class="lead">Products</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="counter">
+                            <h2 class="display-4 fw-bold">50+</h2>
+                            <p class="lead">Countries</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="counter">
+                            <h2 class="display-4 fw-bold">4.8</h2>
+                            <p class="lead">Average Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-5 fw-bold mb-4">Join the AURAVE Community</h2>
+                        <p class="lead mb-4">
+                            Be part of our journey as we continue to redefine luxury fashion. Follow us for the latest updates, exclusive offers, and behind-the-scenes content.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="shop.html" class="btn btn-orange btn-lg">Shop Now</a>
+                            <a href="contact.html" class="btn btn-outline-secondary btn-lg">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">AURAVE</h5>
+                    <p class="text-muted">Luxury Fashion for Every Aura</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Shop</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="shop.html" class="text-muted text-decoration-none">Women</a></li>
+                        <li><a href="shop.html" class="text-muted text-decoration-none">Men</a></li>
+                        <li><a href="shop.html" class="text-muted text-decoration-none">Accessories</a></li>
+                        <li><a href="shop.html" class="text-muted text-decoration-none">Shoes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-muted text-decoration-none">About Us</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Size Guide</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Shipping</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2025 AURAVE. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Made with <i class="bi bi-heart-fill text-danger"></i> for fashion lovers</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/event.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    
+    <!-- About Page Script -->
+    <script>
+        $(document).ready(function() {
+            // Animate counters on scroll
+            const counters = document.querySelectorAll('.counter h2');
+            const speed = 200;
+
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target') || parseInt(counter.innerText.replace(/[^\d]/g, ''));
+                const count = +counter.innerText.replace(/[^\d]/g, '');
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc).toLocaleString();
+                    setTimeout(() => animateCounter(counter), 1);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText.replace(/[^\d]/g, ''));
+                counter.setAttribute('data-target', target);
+                counter.innerText = '0';
+                observer.observe(counter);
+            });
+        });
+    </script>
+</body>
+</html>

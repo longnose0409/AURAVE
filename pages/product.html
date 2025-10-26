@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ===========================
+         AURAVE - Product Details Page
+         "Luxury Fashion for Every Aura"
+         
+         This page displays detailed product information including
+         image gallery, specifications, reviews, and purchase options.
+         
+         Author: AURAVE Development Team
+         Version: 1.0
+         Last Updated: 2025
+         =========================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - AURAVE</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">AURAVE</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="search-toggle">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="cart-toggle">
+                            <i class="bi bi-bag">
+                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="display: none;">0</span>
+                            </i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="user-toggle">
+                            <i class="bi bi-person"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Container -->
+    <div id="search-container" class="search-container position-fixed w-100" style="top: 80px; z-index: 1000; display: none;">
+        <div class="container">
+            <div class="bg-white p-3 shadow">
+                <form id="search-form" class="d-flex">
+                    <input type="search" class="form-control me-2" placeholder="Search products..." id="search-input">
+                    <button type="submit" class="btn btn-orange">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Container -->
+    <div id="cart-container" class="cart-container position-fixed" style="top: 80px; right: 20px; width: 350px; max-height: 500px; overflow-y: auto; z-index: 1000; display: none; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+        <!-- Cart content will be populated by JavaScript -->
+    </div>
+
+    <!-- Main Content -->
+    <main style="margin-top: 100px;">
+        <!-- Breadcrumb -->
+        <section class="py-3 bg-light">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="shop.html">Women</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Elegant Black Dress</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Product Details -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Product Images -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="product-images">
+                            <!-- Main Image -->
+                            <div class="main-image mb-3">
+                                <img src="../assets/images/products/dress-1.jpg" alt="Elegant Black Dress" class="img-fluid rounded shadow" id="main-image" style="cursor: pointer;">
+                            </div>
+                            
+                            <!-- Thumbnail Images -->
+                            <div class="thumbnail-images d-flex gap-2">
+                                <img src="../assets/images/products/dress-1.jpg" alt="Front View" class="thumbnail-img active" data-main="../assets/images/products/dress-1.jpg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid var(--aurave-orange);">
+                                <img src="../assets/images/products/dress-2.jpg" alt="Side View" class="thumbnail-img" data-main="../assets/images/products/dress-2.jpg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent;">
+                                <img src="../assets/images/products/dress-3.jpg" alt="Back View" class="thumbnail-img" data-main="../assets/images/products/dress-3.jpg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent;">
+                                <img src="../assets/images/products/dress-4.jpg" alt="Detail View" class="thumbnail-img" data-main="../assets/images/products/dress-4.jpg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Information -->
+                    <div class="col-lg-6">
+                        <div class="product-info">
+                            <!-- Product Title -->
+                            <h1 class="display-6 fw-bold mb-3">Elegant Black Dress</h1>
+                            
+                            <!-- Rating -->
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rating me-3">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <span class="text-muted">(24 reviews)</span>
+                                <span class="badge bg-success ms-3">In Stock</span>
+                            </div>
+                            
+                            <!-- Price -->
+                            <div class="price-section mb-4">
+                                <div class="d-flex align-items-center">
+                                    <span class="h2 text-orange fw-bold me-3">$89.99</span>
+                                    <span class="h5 text-muted text-decoration-line-through">$129.99</span>
+                                    <span class="badge bg-danger ms-2">30% OFF</span>
+                                </div>
+                                <p class="text-muted mb-0">You save $40.00</p>
+                            </div>
+                            
+                            <!-- Description -->
+                            <div class="description mb-4">
+                                <p class="lead">A timeless piece that combines elegance with modern sophistication. This black dress features a flattering silhouette and premium materials that ensure comfort and style.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-check-circle text-orange me-2"></i>100% Premium Cotton</li>
+                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Machine Washable</li>
+                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Available in Multiple Sizes</li>
+                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Free Shipping on Orders Over $100</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Size Selection -->
+                            <div class="size-selection mb-4">
+                                <h6 class="fw-bold mb-3">Size</h6>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button class="btn btn-outline-secondary size-btn" data-size="XS">XS</button>
+                                    <button class="btn btn-outline-secondary size-btn" data-size="S">S</button>
+                                    <button class="btn btn-primary size-btn active" data-size="M">M</button>
+                                    <button class="btn btn-outline-secondary size-btn" data-size="L">L</button>
+                                    <button class="btn btn-outline-secondary size-btn" data-size="XL">XL</button>
+                                </div>
+                                <a href="#" class="text-orange text-decoration-none" data-bs-toggle="modal" data-bs-target="#sizeGuideModal">
+                                    <i class="bi bi-ruler me-1"></i>Size Guide
+                                </a>
+                            </div>
+                            
+                            <!-- Color Selection -->
+                            <div class="color-selection mb-4">
+                                <h6 class="fw-bold mb-3">Color</h6>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-secondary color-btn active" data-color="black" style="background-color: #000; color: white;">Black</button>
+                                    <button class="btn btn-outline-secondary color-btn" data-color="navy" style="background-color: #000080; color: white;">Navy</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Quantity -->
+                            <div class="quantity-selection mb-4">
+                                <h6 class="fw-bold mb-3">Quantity</h6>
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-outline-secondary quantity-btn" data-action="decrease">-</button>
+                                    <input type="number" class="form-control quantity-input text-center mx-2" value="1" min="1" max="10" style="width: 80px;">
+                                    <button class="btn btn-outline-secondary quantity-btn" data-action="increase">+</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="action-buttons mb-4">
+                                <div class="row g-2">
+                                    <div class="col-md-8">
+                                        <button class="btn btn-orange w-100 btn-lg add-to-cart-btn" 
+                                                data-product-id="1"
+                                                data-product-name="Elegant Black Dress"
+                                                data-product-price="89.99"
+                                                data-product-image="../assets/images/products/dress-1.jpg">
+                                            <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-outline-secondary w-100 btn-lg wishlist-btn" data-product-id="1">
+                                            <i class="bi bi-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Product Features -->
+                            <div class="product-features">
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-truck text-orange me-2"></i>
+                                            <small>Free Shipping</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-arrow-clockwise text-orange me-2"></i>
+                                            <small>30-Day Returns</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-shield-check text-orange me-2"></i>
+                                            <small>2-Year Warranty</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-headset text-orange me-2"></i>
+                                            <small>24/7 Support</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Details Tabs -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab">
+                                    Description
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications" type="button" role="tab">
+                                    Specifications
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">
+                                    Reviews (24)
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab">
+                                    Shipping & Returns
+                                </button>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content" id="productTabsContent">
+                            <!-- Description Tab -->
+                            <div class="tab-pane fade show active" id="description" role="tabpanel">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h5 class="card-title">Product Description</h5>
+                                        <p>This elegant black dress is a timeless piece that combines sophistication with modern comfort. Crafted from premium cotton, it features a flattering A-line silhouette that works for both casual and formal occasions.</p>
+                                        
+                                        <h6>Key Features:</h6>
+                                        <ul>
+                                            <li>Classic A-line silhouette for a flattering fit</li>
+                                            <li>Premium cotton blend for comfort and durability</li>
+                                            <li>Versatile design suitable for various occasions</li>
+                                            <li>Easy-care fabric that maintains its shape</li>
+                                            <li>Available in multiple sizes and colors</li>
+                                        </ul>
+                                        
+                                        <h6>Care Instructions:</h6>
+                                        <p>Machine wash cold, tumble dry low. Iron on low heat if needed. Do not bleach.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Specifications Tab -->
+                            <div class="tab-pane fade" id="specifications" role="tabpanel">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h5 class="card-title">Product Specifications</h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <table class="table table-borderless">
+                                                    <tr>
+                                                        <td class="fw-bold">Material</td>
+                                                        <td>100% Premium Cotton</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Care</td>
+                                                        <td>Machine Washable</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Origin</td>
+                                                        <td>Made in USA</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Weight</td>
+                                                        <td>0.5 lbs</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <table class="table table-borderless">
+                                                    <tr>
+                                                        <td class="fw-bold">Length</td>
+                                                        <td>Knee Length</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Sleeve</td>
+                                                        <td>Short Sleeve</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Neckline</td>
+                                                        <td>Round Neck</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Style</td>
+                                                        <td>Casual/Formal</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Reviews Tab -->
+                            <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="card-title mb-0">Customer Reviews</h5>
+                                            <button class="btn btn-orange" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                                                Write a Review
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Review Summary -->
+                                        <div class="row mb-4">
+                                            <div class="col-md-4 text-center">
+                                                <div class="display-4 fw-bold text-orange">4.8</div>
+                                                <div class="rating mb-2">
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                </div>
+                                                <small class="text-muted">Based on 24 reviews</small>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="rating-bars">
+                                                    <div class="d-flex align-items-center mb-1">
+                                                        <span class="me-2">5</span>
+                                                        <i class="bi bi-star-fill text-warning me-2"></i>
+                                                        <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                                            <div class="progress-bar bg-warning" style="width: 85%"></div>
+                                                        </div>
+                                                        <span class="text-muted">20</span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-1">
+                                                        <span class="me-2">4</span>
+                                                        <i class="bi bi-star-fill text-warning me-2"></i>
+                                                        <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                                            <div class="progress-bar bg-warning" style="width: 15%"></div>
+                                                        </div>
+                                                        <span class="text-muted">4</span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-1">
+                                                        <span class="me-2">3</span>
+                                                        <i class="bi bi-star-fill text-warning me-2"></i>
+                                                        <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                                            <div class="progress-bar bg-warning" style="width: 0%"></div>
+                                                        </div>
+                                                        <span class="text-muted">0</span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-1">
+                                                        <span class="me-2">2</span>
+                                                        <i class="bi bi-star-fill text-warning me-2"></i>
+                                                        <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                                            <div class="progress-bar bg-warning" style="width: 0%"></div>
+                                                        </div>
+                                                        <span class="text-muted">0</span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-1">
+                                                        <span class="me-2">1</span>
+                                                        <i class="bi bi-star-fill text-warning me-2"></i>
+                                                        <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                                            <div class="progress-bar bg-warning" style="width: 0%"></div>
+                                                        </div>
+                                                        <span class="text-muted">0</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Individual Reviews -->
+                                        <div class="reviews-list">
+                                            <div class="review-item border-bottom pb-3 mb-3">
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <div>
+                                                        <h6 class="mb-1">Sarah Johnson</h6>
+                                                        <div class="rating">
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-muted">2 days ago</small>
+                                                </div>
+                                                <p class="mb-0">Absolutely love this dress! The fit is perfect and the quality is outstanding. I've received so many compliments when wearing it.</p>
+                                            </div>
+                                            
+                                            <div class="review-item border-bottom pb-3 mb-3">
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <div>
+                                                        <h6 class="mb-1">Emily Chen</h6>
+                                                        <div class="rating">
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star text-warning"></i>
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-muted">1 week ago</small>
+                                                </div>
+                                                <p class="mb-0">Great dress, very comfortable and stylish. The only minor issue is that it runs slightly small, so I'd recommend sizing up.</p>
+                                            </div>
+                                            
+                                            <div class="review-item">
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <div>
+                                                        <h6 class="mb-1">Jessica Williams</h6>
+                                                        <div class="rating">
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-muted">2 weeks ago</small>
+                                                </div>
+                                                <p class="mb-0">Perfect dress for any occasion! The material is soft and the cut is very flattering. Highly recommend!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Shipping Tab -->
+                            <div class="tab-pane fade" id="shipping" role="tabpanel">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h5 class="card-title">Shipping & Returns</h5>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6>Shipping Information</h6>
+                                                <ul class="list-unstyled">
+                                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Free shipping on orders over $100</li>
+                                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Standard shipping: 3-5 business days</li>
+                                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Express shipping: 1-2 business days</li>
+                                                    <li><i class="bi bi-check-circle text-orange me-2"></i>International shipping available</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6>Return Policy</h6>
+                                                <ul class="list-unstyled">
+                                                    <li><i class="bi bi-check-circle text-orange me-2"></i>30-day return window</li>
+                                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Items must be in original condition</li>
+                                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Free return shipping</li>
+                                                    <li><i class="bi bi-check-circle text-orange me-2"></i>Full refund or exchange</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Products -->
+        <section class="py-5">
+            <div class="container">
+                <h3 class="text-center mb-5">You Might Also Like</h3>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card product-card h-100">
+                            <img src="../assets/images/products/dress-2.jpg" class="card-img-top" alt="Related Product" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Summer Dress</h5>
+                                <p class="card-text text-muted">Light and breezy</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 text-orange">$69.99</span>
+                                    <button class="btn btn-orange btn-sm">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card product-card h-100">
+                            <img src="../assets/images/products/dress-3.jpg" class="card-img-top" alt="Related Product" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Evening Gown</h5>
+                                <p class="card-text text-muted">Elegant and sophisticated</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 text-orange">$149.99</span>
+                                    <button class="btn btn-orange btn-sm">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card product-card h-100">
+                            <img src="../assets/images/products/dress-4.jpg" class="card-img-top" alt="Related Product" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Casual Dress</h5>
+                                <p class="card-text text-muted">Perfect for everyday</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 text-orange">$49.99</span>
+                                    <button class="btn btn-orange btn-sm">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card product-card h-100">
+                            <img src="../assets/images/products/dress-5.jpg" class="card-img-top" alt="Related Product" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">Office Dress</h5>
+                                <p class="card-text text-muted">Professional and stylish</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 text-orange">$79.99</span>
+                                    <button class="btn btn-orange btn-sm">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Size Guide Modal -->
+    <div class="modal fade" id="sizeGuideModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Size Guide</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Bust (in)</th>
+                                    <th>Waist (in)</th>
+                                    <th>Hip (in)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>XS</td>
+                                    <td>32-34</td>
+                                    <td>24-26</td>
+                                    <td>34-36</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>34-36</td>
+                                    <td>26-28</td>
+                                    <td>36-38</td>
+                                </tr>
+                                <tr>
+                                    <td>M</td>
+                                    <td>36-38</td>
+                                    <td>28-30</td>
+                                    <td>38-40</td>
+                                </tr>
+                                <tr>
+                                    <td>L</td>
+                                    <td>38-40</td>
+                                    <td>30-32</td>
+                                    <td>40-42</td>
+                                </tr>
+                                <tr>
+                                    <td>XL</td>
+                                    <td>40-42</td>
+                                    <td>32-34</td>
+                                    <td>42-44</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div class="modal fade" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Write a Review</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="review-form">
+                        <div class="mb-3">
+                            <label class="form-label">Rating *</label>
+                            <div class="rating-input">
+                                <i class="bi bi-star rating-star" data-rating="1"></i>
+                                <i class="bi bi-star rating-star" data-rating="2"></i>
+                                <i class="bi bi-star rating-star" data-rating="3"></i>
+                                <i class="bi bi-star rating-star" data-rating="4"></i>
+                                <i class="bi bi-star rating-star" data-rating="5"></i>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="review-title" class="form-label">Review Title *</label>
+                            <input type="text" class="form-control" id="review-title" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="review-text" class="form-label">Your Review *</label>
+                            <textarea class="form-control" id="review-text" name="review" rows="4" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-orange">Submit Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">AURAVE</h5>
+                    <p class="text-muted">Luxury Fashion for Every Aura</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Shop</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="shop.html" class="text-muted text-decoration-none">Women</a></li>
+                        <li><a href="shop.html" class="text-muted text-decoration-none">Men</a></li>
+                        <li><a href="shop.html" class="text-muted text-decoration-none">Accessories</a></li>
+                        <li><a href="shop.html" class="text-muted text-decoration-none">Shoes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-muted text-decoration-none">About Us</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Size Guide</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Shipping</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2025 AURAVE. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Made with <i class="bi bi-heart-fill text-danger"></i> for fashion lovers</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/event.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    
+    <!-- Product Page Script -->
+    <script>
+        $(document).ready(function() {
+            // Image gallery functionality
+            $('.thumbnail-img').click(function() {
+                $('.thumbnail-img').removeClass('active').css('border-color', 'transparent');
+                $(this).addClass('active').css('border-color', 'var(--aurave-orange)');
+                $('#main-image').attr('src', $(this).data('main'));
+            });
+            
+            // Main image click to zoom
+            $('#main-image').click(function() {
+                UIFunctions.handleImageZoom(this);
+            });
+            
+            // Size selection
+            $('.size-btn').click(function() {
+                $('.size-btn').removeClass('active btn-primary').addClass('btn-outline-secondary');
+                $(this).addClass('active btn-primary').removeClass('btn-outline-secondary');
+            });
+            
+            // Color selection
+            $('.color-btn').click(function() {
+                $('.color-btn').removeClass('active');
+                $(this).addClass('active');
+            });
+            
+            // Quantity controls
+            $('.quantity-btn').click(function() {
+                const action = $(this).data('action');
+                const input = $('.quantity-input');
+                let value = parseInt(input.val()) || 1;
+                
+                if (action === 'increase' && value < 10) {
+                    value++;
+                } else if (action === 'decrease' && value > 1) {
+                    value--;
+                }
+                
+                input.val(value);
+            });
+            
+            // Rating stars
+            $('.rating-star').click(function() {
+                const rating = $(this).data('rating');
+                $('.rating-star').removeClass('bi-star-fill').addClass('bi-star');
+                for (let i = 1; i <= rating; i++) {
+                    $(`.rating-star[data-rating="${i}"]`).removeClass('bi-star').addClass('bi-star-fill');
+                }
+            });
+            
+            // Hover effect for rating stars
+            $('.rating-star').hover(
+                function() {
+                    const rating = $(this).data('rating');
+                    $('.rating-star').removeClass('bi-star-fill').addClass('bi-star');
+                    for (let i = 1; i <= rating; i++) {
+                        $(`.rating-star[data-rating="${i}"]`).removeClass('bi-star').addClass('bi-star-fill');
+                    }
+                },
+                function() {
+                    // Reset to current rating on mouse leave
+                    const currentRating = $('.rating-star.bi-star-fill').length;
+                    $('.rating-star').removeClass('bi-star-fill').addClass('bi-star');
+                    for (let i = 1; i <= currentRating; i++) {
+                        $(`.rating-star[data-rating="${i}"]`).removeClass('bi-star').addClass('bi-star-fill');
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
